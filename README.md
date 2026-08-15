@@ -18,6 +18,9 @@ Each console has its own folder containing:
 | `.eps` | Encapsulated PostScript — vector, opens in Illustrator, Affinity Designer, Inkscape, CorelDRAW |
 | `.af` | Affinity native source — the primary working files |
 | Comparison image | Side-by-side of the recreation against an original label, for verification |
+| `dimension.txt` | The label's true print size — the trim dimensions of the label itself, excluding any transparent margin around the artwork |
+ 
+The transparent edges in the source files exist to give you working room, so the visible canvas is larger than the finished label. Use `dimension.txt` as the authoritative size, not whatever the document bounds report.
  
 ## Software
  
@@ -61,6 +64,7 @@ Names are given as they appear installed on the machine these designs were built
 These are reproductions of physical labels, so scale accuracy matters more than anything else:
  
 - **Print at 100%.** Turn off "fit to page," "scale to fit," and any driver-side auto-scaling. A label printed at 97% will look right on screen and wrong on the console.
+- **Measure against `dimension.txt`, not the canvas.** The artwork carries transparent margin, so the document is larger than the finished label. The dimensions in that file are the real ones.
 - **Check against the comparison image** in each folder before committing to a full sheet.
 - **Test on plain paper first**, hold it against the console, and confirm dimensions with calipers or a steel rule before printing on label stock.
 - Results vary considerably by printer, stock, and finish. Matte or satin adhesive label stock generally reads closest to the originals; glossy photo paper tends to look too modern.
@@ -78,10 +82,17 @@ They're entirely optional. Nothing in this repository depends on them, and the d
  
 Corrections and additions are genuinely wanted. Useful contributions include:
  
-- **New consoles or new regional variants** — source files in at least one editable format, plus a comparison image against an original.
+- **New consoles or new regional variants**
 - **Corrections** — if a dimension, color, font, or glyph is off, open an issue or a pull request. Please include a photo of the original you're comparing against.
 - **Format additions** — an SVG or AI export of an existing design, or a cleaner vector trace.
-When adding a console, please match the existing structure: one folder per console, source files inside, and a comparison image alongside. Please don't commit font files. If your design uses a typeface not already listed above, add it to the table in your pull request instead.
+### What a console folder needs
+ 
+Please follow the pattern set by the existing three folders. A complete submission has all of the following:
+ 
+1. **All three source formats** — `.psd`, `.eps`, and `.af`. Working from one master and exporting the other two is fine; the point is that nobody gets locked out by the application they own.
+2. **A real comparison image** — an actual photograph of an original label placed alongside the recreation. Not a mockup, not a render, not the recreation on its own. The photo is what lets everyone else verify the work, so shoot it flat and square-on with even lighting.
+3. **A `dimension.txt`** — the finished label's print size, excluding transparent margin. State the units.
+Please don't commit font files. If your design uses a typeface not already listed above, add it to the table in your pull request instead.
  
 If you only have a photo of a variant that isn't represented here, that's still worth opening an issue for — a good flat, square-on photo of an original label with a scale reference is the hardest part of building one of these.
  
